@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Match stats{% endblock title %}
+{% block page_onload %} onload="getMatchInfo({{data['chart_data']}})" {% endblock page_onload%}
+{% block afternav %}
+
+     {% if chart_type == "barMatchesPlayed" %}
+     <div class="container">
+       <div class="row">
+         <div class="col-12">
+           <h1 class="font-weight-dark text-center mt-4 mb-0">Number of matches played by the teams</h1>
+           <hr class=" my-hr mt-2 mb-5">
+         </div>
+       </div>
+     </div>
+      <!-- bar chart for matches played by the teams-->
+      <div class="container">
+        <div class="row padding text-center">
+          <div class="col-12" id="matchesPlayed">
+
+          </div>
+        </div>
+      </div>
+
+      {% elif chart_type == "barMatchesWon" %}
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="font-weight-dark text-center mt-4 mb-0">Number of matches won by the teams</h1>
+            <hr class="my-hr">
+          </div>
+        </div>
+      </div>
+       <!-- bar chart for matches won by the teams -->
+       <div class="container">
+         <div class="row padding text-center">
+           <div class="col-lg-3 col-md-2 " >
+           </div>
+           <div class="col-lg-6 col-md-7 col-sm-12" id="matchesPlayed">
+           </div>
+           <div class="col-lg-3 col-md-3 " >
+         </div>
+       </div>
+       {% endif %}
+   </div>
+
+{% endblock afternav%}

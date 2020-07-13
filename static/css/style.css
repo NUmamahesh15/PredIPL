@@ -1,0 +1,57 @@
+
+.carousel-inner{
+  width:80%;
+  max-height: 600px !important;
+}
+
+.carousel-inner > .carousel-item > img{
+  max-height:600px;
+  width:500px;
+  margin:0 auto;
+}
+
+.jumbotron {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+#social-img{
+  padding-right:20px !important;
+  padding-left:20px !important;
+}
+
+
+.my-carousel{
+  margin-top:-80px;
+  background-color:black;
+}
+
+table tr td {
+ font-weight:bold;
+ font-size:20px;
+}
+
+form  label {font-weight:bold}
+
+.my-hr{
+  border-top:2px solid #040505;
+  width:75%;
+  margin-top:.3rem;
+  margin-bottom: 1rem;
+}
+
+.my-nav{
+  background: None;
+}
+
+.inner{
+  overflow:hidden;
+}
+
+.inner img{
+  transition: 1.5s ease;
+}
+
+.inner:hover img{
+  transform: scale(1.5)
+}

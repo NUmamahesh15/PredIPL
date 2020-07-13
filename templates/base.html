@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <title>{% block title %}PredIPL {% endblock title %}</title>
+  <meta name="viewport"  content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css?v=1234">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+  <body {% block page_onload %} {%endblock page_onload %} style="background-image:url(../static/images/stadium.jpg); background-size: 100% 100%; background-attachment: fixed;">
+    <div class="Header">
+      <nav class="navbar navbar-expand-sm navbar-light sticky-top my-nav">
+       <div class="container-fluid">
+          <a class="navbar-brand" href="/home"><img class="img-fluid" src="../static/images/ipl_logo.png" ></a>
+          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navRespond">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navRespond">
+             <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                   <a href="/home" class="nav-link "><h4>HOME</h4></a>
+                </li>
+             </ul>
+          </div>
+       </div>
+      </nav>
+      </div>
+      {% block afternav %} {% endblock %}
+
+
+    <script type="text/javascript" src="../static/js/d3.v4.js"></script>
+    <script type="text/javascript" src="../static/js/piecheck.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.js"></script>
+    <script type="text/javascript" src="../static/js/javaScriptFunctions.js"></script>
+    <script type="text/javascript" src="../static/js/barplot.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

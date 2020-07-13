@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+{% block title %}PREDICTED WINNER{% endblock title %}
+{% block afternav %}
+     <div class="container" style="padding-top:20px">
+       <div class="row padding">
+         <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+           <img src="../static/images/result/{{match_details['home_team']}}.jpg" class="img-fluid"  alt="">
+         </div>
+         <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+             <img src="../static/images/sword.JPG" class="img-fluid center" alt="">
+         </div>
+         <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+           <img src="../static/images/result/{{match_details['away_team']}}.jpg" class="img-fluid"  alt="">
+         </div>
+       </div>
+     </div>
+      <!-- tables -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <div  class="table-responsive" style="padding:20px;">
+            <table class="table table-hover table-bordered" style="width:600px;margin-left:auto;margin-right:auto">
+              <th class="table-success" colspan="2" style="text-align:center;font-size:30px;font-weight:bold">RESULT</th>
+              <tr class="bg-warning">
+                <td>HOME TEAM</td>
+                <td>{{match_details['home_team']}}</td>
+              </tr>
+              <tr class="table-success">
+                <td>AWAY TEAM</td>
+                <td>{{match_details['away_team']}}</td>
+              </tr>
+              <tr class="table-light">
+                <td>VENUE</td>
+                <td>{{match_details['city']}}</td>
+              </tr>
+              <tr class="bg-warning">
+                <td>TOSS WINNER</td>
+                <td>{{match_details['toss_winner']}}</td><br></br>
+              </tr>
+              <tr class="table-success">
+                <td>TOSS DECISION</td>
+                <td>{{match_details['toss_decision']}}</td>
+              </tr>
+              <th class="table-light" colspan="2" style="text-align:center;font-size:20px;font-weight:bold">PREDICTED WINNER</th>
+              <tr class="bg-warning">
+                <td>LOGISTIC REGRESSION</td>
+                <td>{{match_details['winner']['lrc']}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <!-- <div class="col-sm-4">
+        </div> -->
+
+      </div>
+
+      </div>
+
+      <!-- END TABLE -->
+
+      <div class="container padding">
+        <div class="row padding text-center">
+          <div class="col-6 text-center ">
+            <button id="oth-model" class="btn-primary" title="" type="button"  data-toggle="tooltip" name="button"> OTHER MODEL WINNERS</button>
+          </div>
+          <div class="col-6 text-center ">
+            <button id="eval" class="btn-primary" title="" type="button" data-toggle="tooltip" name="button"> EVALUATION METRICS</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other model results -->
+      <div class="container">
+        <div class="row padding text-center">
+          <!-- <div class="col-md-2"></div> -->
+          <div class="col-md-6 col-sm-12">
+            <div  class="table-responsive" style="padding:20px;">
+              <table class="table table-hover table-bordered table-dark" id="oth-table" style="display:none; align:center">
+                <tr >
+                  <td>RANDOM FOREST</td>
+                  <td>{{match_details['winner']['rfc']}}</td>
+                </tr>
+                <tr >
+                  <td>SVM</td>
+                  <td>{{match_details['winner']['svc']}}</td>
+                </tr>
+                <tr >
+                  <td>NAIVE BAYES</td>
+                  <td>{{match_details['winner']['nbc']}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!-- <div class="col-md-2"></div>
+        </div>
+
+      </div> -->
+      <!-- Evaluation metric table -->
+      <!-- <div class="container">
+        <div class="row padding text-center">
+          <div class="col-md-2"></div> -->
+          <div class="col-md-6 col-sm-12">
+            <div  class="table-responsive table-fluid" style="padding:20px;">
+              <table class="table table-hover table-bordered table-dark" id="evalMetric" style="display:none; align:center">
+                <th colspan=5><h3>MODEL EVALUATION (%) </h3></th>
+                <tr>
+                  <td></td>
+                  <td>LOGISTIC</td>
+                  <td>RANDOM</td>
+                  <td>SVM</td>
+                  <td>NAIVE</td>
+                </tr>
+               {% for metric in eval_metrics.keys() %}
+               <tr>
+                 <td>{{metric}}</td>
+                 <td>{{eval_metrics[metric]['LOGISTIC ']}}</td>
+                 <td>{{eval_metrics[metric]['RANDOM FOREST']}}</td>
+                 <td>{{eval_metrics[metric]['SVM']}}</td>
+                 <td>{{eval_metrics[metric]['NAIVE BAYES']}}</td>
+               </tr>
+               {% endfor %}
+             <!-- <tr>
+               <td>PRECISION</td>
+               <td>{{eval_metrics['PRECISION']['LOGISTIC ']}}</td>
+               <td>{{eval_metrics['PRECISION']['RANDOM FOREST']}}</td>
+               <td>{{eval_metrics['PRECISION']['SVM']}}</td>
+               <td>{{eval_metrics['PRECISION']['NAIVE BAYES']}}</td>
+             </tr>
+             <tr>
+               <td>RECALL</td>
+               <td>{{eval_metrics['RECALL']['LOGISTIC ']}}</td>
+               <td>{{eval_metrics['RECALL']['RANDOM FOREST']}}</td>
+               <td>{{eval_metrics['RECALL']['SVM']}}</td>
+               <td>{{eval_metrics['RECALL']['NAIVE BAYES']}}</td>
+             </tr>
+             <tr>
+               <td>F1 SCORE</td>
+               <td>{{eval_metrics['F1 SCORE']['LOGISTIC ']}}</td>
+               <td>{{eval_metrics['F1 SCORE']['RANDOM FOREST']}}</td>
+               <td>{{eval_metrics['F1 SCORE']['SVM']}}</td>
+               <td>{{eval_metrics['F1 SCORE']['NAIVE BAYES']}}</td>
+             </tr>
+             <tr>
+               <td>ACCURACY</td>
+               <td>{{eval_metrics['ACCURACY']['LOGISTIC ']}}</td>
+               <td>{{eval_metrics['ACCURACY']['RANDOM FOREST']}}</td>
+               <td>{{eval_metrics['ACCURACY']['SVM']}}</td>
+               <td>{{eval_metrics['ACCURACY']['NAIVE BAYES']}}</td>
+             </tr> -->
+
+           </table>
+          </div>
+          </div>
+           <div class="col-md-2"></div>
+        </div>
+
+      </div>
+
+      <div class="container" id='jumbo' style="background-color:#d7ebf7">
+        <h1 class="font-weight-dark text-center  mt-4 mb-0" style="font-weight:bold;">PREDICTED WINNER</h1>
+        <hr class="my-hr">
+        <div class="row jumbotron text-center" style="background-color:#d7ebf7">
+          <div class="col-12">
+            <h2 class="font-weight-dark text-center ">The prediction accuracy of Logistic Regression model is higher than the other models.
+              Hence ,the potential winner of the match between <i>{{match_details['home_team']}}</i> and <i>{{match_details['away_team']}}</i>
+                    is <i>{{match_details['winner']['lrc']}}</i> </h2>
+          </div>
+        </div>
+        <div class="row text-center" style="background-color:#d7ebf7">
+          <div class="col-md-4 col-sm-4 col-xs-4"></div>
+          <div class="col-md-4 col-sm-4 col-xs-4">
+            <!-- <div class="row text-center">
+              <div class="col-12"> -->
+              <img class="img-fluid" src="../static/images/result/{{match_details['winner']['lrc']}}.jpg" alt="">
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-4"></div>
+
+          </div>
+      </div>
+
+{% endblock afternav %}

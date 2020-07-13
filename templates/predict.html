@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}Match information {% endblock title %}
+{% block afternav %}
+     <!-- forms -->
+     <div class="container" style="padding:20px;">
+       <!-- <div class="container-fluid padding"> -->
+         <div class="row welcome text-center">
+           <div class="col-12">
+             <h1 class="display-10"> MATCH INFORMATION</h1>
+           </div>
+           <hr class="my-hr">
+         </div>
+       <!-- </div> -->
+     </div>
+
+     <div class="container">
+       <div class="row">
+         <div class="col-2">
+
+         </div>
+
+         <div class="col-8">
+           <form class="form-group" id="predict-form"  action="/submit" method="POST">
+
+             <!-- home team selection -->
+             <div class="form-group">
+               <label for="homeId">HOME TEAM</label>
+               <select class="form-control custom-select" id="homeId" name="homeTeam" onchange="getVenue(this.value);checkTeam(this.value);" required>
+                 <option value="">Select home team</option>
+                 {% for key in team_venue_mapping.keys() %}
+                  <option value={{team_venue_mapping[key]}}>{{key}}</option>
+                  {% endfor %}
+               </select>
+
+             </div>
+             <!-- away team selection -->
+             <div class="form-group">
+               <label for="awayId">AWAY TEAM</label>
+               <select class="form-control custom-select" id="awayId" name="awayTeam" onchange="checkTeam(this.value);" required>
+                 <option value="">Select away team</option>
+                 {% for key in team_venue_mapping.keys() %}
+                  <option value={{team_venue_mapping[key]}}>{{key}}</option>
+                  {% endfor %}
+               </select>
+
+             </div>
+             <!-- Updating the venue -->
+             <div class="form-group">
+               <label for="city">VENUE</label>
+               <input type="text" name="city" id="city" readonly/>
+             </div>
+
+             <!-- selecting the toss winner -->
+             <div class="form-group">
+               <label for="toss">SELECT THE TOSS WINNER</label>
+               <select class="form-control custom-select" name="tossWinner" id="toss" onmousedown="teamWinningToss()" required>
+                 <option value="">select team</option>
+               </select>
+
+             </div>
+             <!-- Toss decision -->
+             <div class="form-group">
+               <label for="tossD">TOSS DECISION</label>
+               <ul  name="tossDecision" id="tossD">
+                 <li>
+                   <input type="radio" value="Bat" id="a-option" name="selector1" checked>
+                   <label for="a-option">Bat</label>
+                  </li>
+                  <li>
+                    <input type="radio" value="Field" id="b-option" name="selector1">
+                    <label for="b-option">Field</label>
+                  </li>
+                </ul>
+             </div>
+             <input type="submit" class="btn btn-primary" value="Submit">
+             <input type="reset" class="btn btn-primary" id="reset" value="Clear">
+           </form>
+         </div>
+         <div class="col-2">
+
+         </div>
+
+       </div>
+
+    </div>
+{% endblock afternav %}

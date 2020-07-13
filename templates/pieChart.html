@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% block title %}Match Stats{% endblock title %}
+{% block page_onload %} onload="displayChart({{data}},{{dict_data['num_played']}})" {% endblock page_onload%}
+{% block afternav %}
+
+
+     <!-- Toss winner vs Match winner -->
+     {% if dict_data['chart_type']=="tossWinMatchWin" %}
+
+     <div class="container">
+       <div class="row">
+         <div class="col-12">
+           <h1 class="font-weight-dark text-center  mt-4 mb-0">Toss Winner vs Match Winner</h1>
+           <hr class=" my-hr mt-2 mb-5">
+         </div>
+       </div>
+
+     </div>
+      <!-- Pie chart for toss winner vs match winner -->
+      <div class="container">
+        <div class="row jumbotron text-center" style="margin:auto;padding:0px">
+          <div class="col-12">
+            <h4>Number of matches won by team winning the toss : {{dict_data['number_matches_toss_win_match_win']}}</h4>
+            <h4>Number of matches lost by team winning the toss : {{dict_data['number_matches_toss_win_match_lost']}}</h4>
+
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row padding text-center">
+          <div class="col-md-0 col-sm-0 " >
+          </div>
+          <div class="col-md-12 col-sm-8 col-xs-12" id="tossWinMatchWin" >
+          </div>
+          <div class="col-md-0 col-sm-4" >
+          </div>
+        </div>
+      </div>
+      <!-- Toss Decision -->
+      {% elif dict_data['chart_type']=="tossDecision"%}
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="font-weight-dark text-center  mt-4 mb-0">Toss Decision</h1>
+            <hr class=" my-hr mt-2 mb-5">
+          </div>
+        </div>
+      </div>
+       <!-- Pie chart for toss winner vs match winner -->
+       <div class="container">
+         <div class="row jumbotron text-center" style="margin:auto;padding:0px">
+           <div class="col-12">
+             <h4>Number of matches teams decided to field first : {{dict_data['field']}}</h4>
+             <h4>Number of matches teams decided to bat first : {{dict_data['bat']}}</h4>
+           </div>
+         </div>
+       </div>
+       <div class="container">
+         <div class="row padding text-center">
+           <div class="col-md-0 col-sm-0" >
+           </div>
+           <div class="col-md-12 col-sm-8" id="tossWinMatchWin" >
+           </div>
+           <div class="col-md-0 col-sm-4" >
+           </div>
+         </div>
+       </div>
+<!-- Pie chart for toss decision field -->
+      {% elif dict_data['chart_type']=="tossDecisionField" %}
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="font-weight-dark text-center mt-4 mb-0">Outcome of decision to field first</h1>
+            <hr class=" my-hr mt-2 mb-5">
+          </div>
+        </div>
+      </div>
+       <div class="container">
+         <div class="row jumbotron text-center" style="margin:auto;padding:0px">
+           <div class="col-12">
+             <h4>Number of matches won : {{dict_data['won']}}</h4>
+             <h4>Number of matches lost: {{dict_data['lost']}}</h4>
+           </div>
+         </div>
+       </div>
+       <div class="container">
+         <div class="row padding text-center">
+           <div class="col-md-0 col-sm-0" >
+           </div>
+           <div class="col-md-12 col-sm-8" id="tossWinMatchWin" >
+           </div>
+           <div class="col-md-0 col-sm-4" >
+           </div>
+         </div>
+       </div>
+       <!-- Toss Decision bat first  -->
+       {% elif dict_data['chart_type']=="tossDecisionBat" %}
+       <div class="container">
+         <div class="row">
+           <div class="col-12">
+             <h1 class="font-weight-dark text-center  mt-4 mb-0">Outcome of decision to bat first</h1>
+             <hr class=" my-hr mt-2 mb-5">
+           </div>
+         </div>
+       </div>
+        <div class="container">
+          <div class="row jumbotron text-center" style="margin:auto;padding:0px">
+            <div class="col-12">
+              <h4>Number of matches won : {{dict_data['won']}}</h4>
+              <h4>Number of matches lost: {{dict_data['lost']}}</h4>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row padding text-center">
+            <div class="col-md-0 col-sm-0" >
+            </div>
+            <div class="col-md-12 col-sm-8" id="tossWinMatchWin" >
+            </div>
+            <div class="col-md-0 col-sm-4" >
+            </div>
+          </div>
+        </div>
+<!-- Home records -->
+        {% elif dict_data['chart_type']=="homeGround" %}
+
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h1 class="font-weight-dark text-center  mt-4 mb-0">Home Ground Performance of {{dict_data['team']}}</h1>
+              <hr class=" my-hr mt-2 mb-5">
+            </div>
+          </div>
+        </div>
+         <div class="container">
+           <div class="row jumbotron text-center" style="margin:auto;padding:0px">
+             <div class="col-12">
+               <h4>Number of matches won : {{dict_data['won']}}</h4>
+               <h4>Number of matches lost: {{dict_data['lost']}}</h4>
+             </div>
+           </div>
+         </div>
+         <div class="container">
+           <div class="row padding text-center">
+             <div class="col-md-0 col-sm-0" >
+             </div>
+             <div class="col-md-12 col-sm-8" id="tossWinMatchWin" >
+             </div>
+             <div class="col-md-0 col-sm-4" >
+             </div>
+           </div>
+         </div>
+
+      {% endif %}
+
+{% endblock afternav %}

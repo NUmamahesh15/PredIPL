@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}IPL stats {% endblock title %}
+{% block afternav %}
+
+
+      <div class="container-fluid padding" style="padding-top:10px">
+        <div class="row padding">
+          <div class="col-md-3 col-sm-6 col-xs-6" >
+            <div class="card" style="background-color:#98c2ed">
+              <div class="card-body text-center">
+                <h4 class="card-title"> Toss Winner vs Match Winner</h4>
+                <hr>
+                <p class="card-text"> This gives us the stats about impact of toss on match outcome i.e. number of matches won/lost by the team winning the toss</p>
+                <a href="/pie?chart=tossWinnerMatchWinner" class="btn btn-outline-secondary"> See Chart</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6 col-xs-6" >
+            <div class="card" style="background-color:#98c2ed">
+              <div class="card-body text-center">
+                <h4 class="card-title"> Toss Decision</h4>
+                <hr>
+                <p class="card-text"> This displays the overall toss decision taken by the teams participating in the IPL to choose batting or bowling first</p>
+                <a href="/pie?chart=tossDecision" class="btn btn-outline-secondary"> See Chart</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6 col-xs-6" >
+            <div class="card" style="background-color:#98c2ed">
+              <div class="card-body text-center">
+                <h4 class="card-title"> Outcome of field first</h4>
+                <hr>
+                <p class="card-text"> This displays the overall outcome of the matches, win or lose, for teams choosing to field first</p>
+                <a href="/pie?chart=tossDecisionField" class="btn btn-outline-secondary"> See Chart</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6 col-xs-6" >
+            <div class="card" style="background-color:#98c2ed">
+              <div class="card-body text-center">
+                <h4 class="card-title"> Outcome of bat first</h4>
+                <hr>
+                <p class="card-text"> This displays the overall outcome of the matches, win or lose, for teams choosing to bat first</p>
+                <a href="/pie?chart=tossDecisionBat" class="btn btn-outline-secondary"> See Chart</a>
+              </div>
+            </div>
+          </div>
+
+          </div>
+          </div>
+
+          <div class="container-fluid padding" style="padding-top:10px">
+          <div class="row padding">
+
+            <div class="col-md-3 col-sm-6 col-xs-6" >
+              <div class="card" style="background-color:#98c2ed">
+                <div class="card-body text-center">
+                  <h4 class="card-title"> Home ground Perfromance</h4>
+                  <hr>
+                  <p class="card-text"> This displays the teams performance, percentage win and percentage of the matches lost, in their home ground.</p>
+                  <a href="/homeGround" class="btn btn-outline-secondary"> See Chart</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-xs-6" >
+              <div class="card" style="background-color:#98c2ed">
+                <div class="card-body text-center">
+                  <h4 class="card-title"> Toss Decision over the years</h4>
+                  <hr>
+                  <p class="card-text"> This displays the toss decision, bat or bowl, taken by the teams from the start to the latest season of IPL.</p>
+                  <a href="/barTossDecision?chart=barTossDecision" class="btn btn-outline-secondary"> See Chart</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-6" >
+              <div class="card" style="background-color:#98c2ed">
+                <div class="card-body text-center">
+                  <h4 class="card-title"> Matches Played by teams</h4>
+                  <hr>
+                  <p class="card-text"> This displays the number of matches played by the team participating in Indian Premiere League.</p>
+                  <a href="/barTossDecision?chart=barMatchesPlayed" class="btn btn-outline-secondary"> See Chart</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-xs-6" >
+              <div class="card" style="background-color:#98c2ed">
+                <div class="card-body text-center">
+                  <h4 class="card-title">Matches won by teams</h4>
+                  <hr>
+                  <p class="card-text"> This displays the number of Indian Premier League matches won by the team participating in IPL.</p>
+                  <a href="/barTossDecision?chart=barMatchesWon" class="btn btn-outline-secondary"> See Chart</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          </div>
+
+{% endblock afternav %}

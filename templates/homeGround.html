@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Home ground performance {% endblock title %}
+{% block afternav %}
+
+     <div class="container ">
+     <form class="form-group" id="predict-form"  action="/pie?chart=homeGround" method="POST">
+
+       <!-- home team selection -->
+       <div class="form-group">
+         <label for="homeId">HOME TEAM</label>
+         <select class="form-control custom-select" id="homeId" name="homeTeam" onchange="getVenue(this.value)" required>
+           <option value="">Select home team</option>
+           {% for key in teams.keys() %}
+            <option value={{teams[key]}}>{{key}}</option>
+            {% endfor %}
+         </select>
+
+       </div>
+       <div class="form-group">
+         <label for="city">VENUE</label>
+         <input type="text" name="city" id="city" readonly/>
+       </div>
+       <input type="submit" class="btn btn-primary" value="Submit">
+       <input type="reset" class="btn btn-primary" id="reset" value="Clear">
+
+      </div>
+{% endblock afternav %}

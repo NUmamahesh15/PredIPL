@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Toss decision over the years{% endblock title %}
+{% block page_onload %} onload="getBatInfo({{data['bat_chart_data']}});getFieldInfo({{data['field_chart_data']}})"
+{% endblock page_onload%}
+{% block afternav %}
+
+
+
+     <div class="container">
+       <h1 class="font-weight-dark text-center  mt-4 mb-0">Toss decision over the years</h1>
+       <hr class="my-hr mt-2 mb-5" >
+     </div>
+      <!-- Bar chart for toss winner vs match winner -->
+
+
+      </div>
+      <div class="container">
+        <div class="row padding text-center">
+          <div  class="col-md-6 col-sm-12" id="tossDecisionBat">
+            <h3 class="font-weight-dark text-center mt-4 mb-0">Toss decision Bat</h3>
+            <hr class=" my-hr mt-2 mb-5">
+          </div>
+
+          <div class="col-md-6 col-sm-12" id="tossDecisionField">
+            <h3 class="font-weight-dark text-center mt-4 mb-0">Toss decision Field</h3>
+            <hr class=" my-hr mt-2 mb-5">
+          </div>
+
+        </div>
+
+      </div>
+
+
+{% endblock afternav %}
